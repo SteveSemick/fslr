@@ -11,25 +11,14 @@ Description: Wrapper functions that interface with 'FSL'
     completely in R, where you pass R objects of class 'nifti', implemented by
     package 'oro.nifti', and the function executes an 'FSL' command and returns an R
     object of class 'nifti' if desired.
-Imports:
-    methods,
-    matrixStats,
-    R.utils,
-    graphics,
-    grDevices,
-    stats, 
-    utils
-Depends:
-    oro.nifti (>= 0.5.0),
-    neurobase,
-    R (>= 3.2.0)
+Imports:    methods,    matrixStats,    R.utils,    graphics,    grDevices,    stats,    utils
+Depends:    oro.nifti (>= 0.5.0),    neurobase,    R (>= 3.2.0)
 License: GPL-3
 VignetteBuilder: knitr
-Suggests:
-    knitr,
-    rmarkdown
+Suggests:    knitr,    rmarkdown
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>
 RoxygenNote: 6.0.1
-Remotes: muschellij2/neurobase
+Remotes: neuroconductor/oro.nifti@d630f771fbd4c5229478808d8199fe55e5c1fbf3, neuroconductor/neurobase@86f4170726e5aa88ea0fbdb0a9fb9c28db900e8f
+biocViews:
 

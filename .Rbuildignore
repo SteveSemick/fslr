@@ -22,3 +22,5 @@ Archive.zip
 NEWS.md
 README.md
 
+
+^appveyor\.yml$
