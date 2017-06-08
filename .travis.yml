@@ -4,6 +4,7 @@
 
 
 
+
 language: r
 warnings_are_errors: true
 sudo: required
@@ -21,6 +22,9 @@ before_install:
   - echo ${TRAVIS_BUILD_ID}
   - echo "TRAVIS JOB ID"
   - echo ${TRAVIS_JOB_ID}
+
+after_success:
+  - Rscript -e 'covr::coveralls()'
 
 notifications:
   email:
