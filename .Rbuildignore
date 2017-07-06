@@ -21,12 +21,8 @@ fslr_maths_helpfile.R
 Archive.zip
 NEWS.md
 README.md
-
+^.lintr$
 ^appveyor\.yml$
-
-
-
-
 
 
 
