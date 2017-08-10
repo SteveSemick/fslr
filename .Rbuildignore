@@ -24,5 +24,8 @@ README.md
 ^.lintr$
 ^appveyor\.yml$
 
+docs/*
+
+
 
 
