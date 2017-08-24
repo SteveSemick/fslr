@@ -19,6 +19,6 @@ Suggests:    knitr,    rmarkdown,    covr
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>
 RoxygenNote: 6.0.1.9000
-Remotes: neuroconductor/oro.nifti@24844d811d488ba6f7a1dde3ec84d1a2698c15fa, neuroconductor/neurobase@3ac3916d81c5dcd420a38c7346636d7c5c02429c
 biocViews:
+Remotes: neuroconductor/oro.nifti@a65aea408c7ecc4ef10a86f3138ad15ad33c9038, neuroconductor/neurobase@3ac3916d81c5dcd420a38c7346636d7c5c02429c
 
