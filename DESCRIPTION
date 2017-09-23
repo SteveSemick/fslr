@@ -2,7 +2,7 @@ Package: fslr
 Type: Package
 Title: Wrapper Functions for FSL ('FMRIB' Software Library) from Functional MRI
     of the Brain ('FMRIB')
-Version: 2.14
+Version: 2.15.1
 Authors@R: person(given = "John",           family = "Muschelli",           role = "cre",           email = "muschellij2@gmail.com")
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Wrapper functions that interface with 'FSL' 
@@ -17,8 +17,9 @@ License: GPL-3
 VignetteBuilder: knitr
 Suggests:    knitr,    rmarkdown,    covr
 BugReports: https://github.com/muschellij2/fslr/issues
-SystemRequirements: FSL <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>
+SystemRequirements: FSL
 RoxygenNote: 6.0.1.9000
+Encoding: UTF-8
 Remotes: neuroconductor/oro.nifti@61e0c9b82103856f780c0390c92b930ea6c2091e, neuroconductor/neurobase@572dc67089fb850c42166635f08962c02b9270a3
 biocViews:
 
