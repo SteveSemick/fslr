@@ -25,17 +25,5 @@ README.md
 ^appveyor\.yml$
 
 docs/*
-
-
-
-
-
-
-
-
-
-
-
-
-
+^README\.Rmd$
 
