@@ -26,6 +26,7 @@ README.md
 
 docs/*
 ^README\.Rmd$
-
-
-
+^DESCRIPTION\.bak$
+^\.travis\.yml$
+^\./\.travis\.yml\.bak$
+^\./appveyor\.yml\.bak$
