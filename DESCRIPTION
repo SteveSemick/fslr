@@ -36,6 +36,6 @@ BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL
 RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
+biocViews: 
 Remotes: neuroconductor/oro.nifti@248fafa9254064c3290286abd3ecf2dd791286fb,
     neuroconductor/neurobase@f01883a16cfc382e98da1da7dc4329addcefad35
-biocViews: 
