@@ -2,8 +2,11 @@ Package: fslr
 Type: Package
 Title: Wrapper Functions for FSL ('FMRIB' Software Library) from Functional MRI
     of the Brain ('FMRIB')
-Version: 2.15.1
-Authors@R: person(given = "John",           family = "Muschelli",           role = "cre",           email = "muschellij2@gmail.com")
+Version: 2.17.0
+Authors@R: c(person(given = "John",
+           family = "Muschelli",
+           email = "muschellij2@gmail.com",
+           role = c("aut", "cre")))
 Maintainer: John Muschelli <muschellij2@gmail.com>
 Description: Wrapper functions that interface with 'FSL' 
     <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>, a powerful and commonly-used 'neuroimaging'
@@ -11,15 +14,28 @@ Description: Wrapper functions that interface with 'FSL'
     completely in R, where you pass R objects of class 'nifti', implemented by
     package 'oro.nifti', and the function executes an 'FSL' command and returns an R
     object of class 'nifti' if desired.
-Imports: methods,    matrixStats,    R.utils,    graphics,    grDevices,    stats,    utils
-Depends: oro.nifti (>= 0.5.0),    neurobase,    R (>= 3.2.0)
+Imports:
+    methods,
+    matrixStats,
+    R.utils,
+    graphics,
+    grDevices,
+    stats, 
+    utils
+Depends:
+    oro.nifti (>= 0.5.0),
+    neurobase,
+    R (>= 3.2.0)
 License: GPL-3
 VignetteBuilder: knitr
-Suggests: knitr,    rmarkdown,    covr
+Suggests:
+    knitr,
+    rmarkdown,
+    covr
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: FSL
 RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
-biocViews:
-Remotes: neuroconductor/oro.nifti@e066bff259d77de5614a3ffc1c293310ab4eb997,
-    neuroconductor/neurobase@8c9dd1990b2940e1d15965f50d7d787dca9eceaf
+Remotes: neuroconductor/oro.nifti@248fafa9254064c3290286abd3ecf2dd791286fb,
+    neuroconductor/neurobase@f01883a16cfc382e98da1da7dc4329addcefad35
+biocViews: 
