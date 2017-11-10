@@ -584,6 +584,7 @@ fslhd.parse <- function(hd){
 #' @description This function obtains the s and q forms of an image transformation 
 #' matrix
 #' @param file (character) filename of image to pass to header
+#' @param verbose (logical) passed to \code{\link{fslhd}}
 #' @param ... options passed to \code{\link{checkimg}}
 #' @return list with elements of sform and qform and their respective codes
 #' @export
@@ -593,9 +594,11 @@ fslhd.parse <- function(hd){
 #'    "MNI152_T1_2mm.nii.gz")
 #'  getForms(mnifile)
 #' }   
-getForms <- function(file, ...){
+getForms <- function(file, 
+                     verbose = FALSE,
+                     ...){
   file = checkimg(file, ...)  
-  x <- fslhd(file)
+  x <- fslhd(file, verbose = verbose)
   convmat <- function(form){
     ss <- strsplit(form, " ")
     ss <- t(sapply(ss, function(x) x[ x != "" ]))
@@ -887,54 +890,6 @@ fslsub2 = function(file,
   #     return(img)
   #   }
   return(res)
-}
-
-#' @title Open image in FSLView
-#' @description This function calls \code{fslview} to view an image 
-#' in the FSL viewer
-#' @param file (character) filename of image to be thresholded
-#' @param intern (logical) pass to \code{\link{system}}
-#' @param opts (character) options for FSLView
-#' @param verbose (logical) print out command before running
-#' @param ... options passed to \code{\link{checkimg}}
-#' @return character or logical depending on intern
-#' @export
-fslview = function(file, intern=TRUE, opts ="", verbose = TRUE, ...){
-  cmd <- get.fsl()
-  if (is.nifti(file)) {
-    file = checkimg(file)
-  }
-  file = lapply(file, checkimg, ...)
-  if (length(file) != length(opts)) {
-    opts = rep(opts, length = length(file))
-  } else {
-    if (length(file) > length(opts)) {
-      opts = c(opts, rep("", length = (length(file) - length(opts))))
-    } else {
-      opts = opts[seq(length(file))]
-    }
-  }
-  file = shQuote(file)
-  file = paste(file, opts)
-  file = paste(file, collapse = " ")
-  cmd <- paste0(cmd, sprintf('fslview %s', file))
-  if (verbose) {
-    message(cmd, "\n")
-  }
-  res = system(cmd, intern = intern)
-  return(res)
-}
-
-#' @title FSLView help
-#' @description This function calls \code{fslview}'s help
-#' @return Prints help output and returns output as character vector
-#' @export
-#' @examples
-#' if (have.fsl()){
-#'  fslview.help()
-#' }   
-fslview.help = function(){
-  return(fslhelp("fslview"))
 }
 
 #' @title Merge images using FSL
