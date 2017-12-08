@@ -37,5 +37,5 @@ SystemRequirements: FSL
 RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
 biocViews: 
-Remotes: neuroconductor/oro.nifti@c25f6bcb1200506a3e39127f550bcca7766b0107,
-    neuroconductor/neurobase@c668aabafa4a51381b7cbc56ff23101abd19e337
+Remotes: neuroconductor/oro.nifti@ce05d267c1e3d4cec38c536dd4e506e1c09c2c4d,
+    neuroconductor/neurobase@95b0e364a8d2f99e97ff2f79a7efb54b821bb43a
