@@ -33,9 +33,9 @@ Suggests:
     rmarkdown,
     covr
 BugReports: https://github.com/muschellij2/fslr/issues
-SystemRequirements: FSL
+SystemRequirements: fsl
 RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
 biocViews: 
-Remotes: neuroconductor/oro.nifti@a3d3633139b9095f1d502e4fc43e1b86cab3ddd5,
-    neuroconductor/neurobase@b3a4d24cb379ed8bd3f5053e80dd4a161ca7e388
+Remotes: neuroconductor/oro.nifti@36474ce8faeb769d00c7bab606f9bb1ca46ccba8,
+    neuroconductor/neurobase@975b860b44ecbee251f13edd88e9a64fca978462
