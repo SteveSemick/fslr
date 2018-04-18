@@ -27,4 +27,4 @@ Encoding: UTF-8
 biocViews:
 Remotes:  
     neuroconductor/oro.nifti@36474ce8faeb769d00c7bab606f9bb1ca46ccba8,
-    neuroconductor/neurobase@776416cd033579eaa534e9925c1d8848594b2701
+    neuroconductor/neurobase@cf79914b4ae46d0e4d3d3d291798da99bdc496ba
