@@ -26,5 +26,5 @@ RoxygenNote: 6.0.1.9000
 Encoding: UTF-8
 biocViews:
 Remotes:  
-    neuroconductor/oro.nifti@36474ce8faeb769d00c7bab606f9bb1ca46ccba8,
-    neuroconductor/neurobase@cf79914b4ae46d0e4d3d3d291798da99bdc496ba
+    neuroconductor/oro.nifti@654f99fc85fdaf21253e3eca6bfb1678d46f41c9,
+    neuroconductor/neurobase@b4ad772be785a8f6a5347500b2c390ffe51f812a
