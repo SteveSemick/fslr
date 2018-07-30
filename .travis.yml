@@ -1,79 +1,25 @@
 language: r
+warnings_are_errors: true
 sudo: false
 cache: packages
-warnings_are_errors: true
-use_bioc: true
-bioc_required: true
-cran: http://cran.rstudio.com
-addons:
-  apt:
-    packages:
-    - libfftw3-dev
-    - libgsl0-dev
-    - libgsl0ldbl
 os:
 - linux
 - osx
-osx_image: xcode9
-dist: trusty
-r:
-- 3.2
-- 3.3
-- 3.4
-- release
-- devel
-allow_failures:
-- r: devel
-- os: osx
-env:
-  global:
-  - RGL_USE_NULL=TRUE
-  - PROJECT_NAME=neuroconductor
-  - DISPLAY=:99.0
 r_check_args: "--as-cran --install-args=--build"
-before_install:
-- ulimit -n 2048
-- export PROJ_DIR=`basename $PWD`
-- fname=travis_helpers.sh
-- wget -O ${fname} http://bit.ly/travis_helpers
-- cat ${fname}; source ${fname}; rm ${fname}
-- cat DESCRIPTION
-- start_xvfb ;
-- export rver=`r_version`;
-- if [ "$TRAVIS_OS_NAME" = "osx" ]; then no_open_mp ; fi
-- Rscript -e 'source("https://install-github.me/mangothecat/callr")'
-- jags_install
-- remove_neuroc_packages
-- cat DESCRIPTION
-- install_remotes_no_dep
-- cat DESCRIPTION
-- export PACKAGE_NAME=`package_name`
-- if [[ "${PACKAGE_NAME}" == "waveslim" ]]; then fftw_install ; fi
-- if [[ "${PACKAGE_NAME}" == "dti" ]]; then gsl_install ; fi
-- if [[ "${PACKAGE_NAME}" == "ROpenCVLite" || "${PACKAGE_NAME}" == "Rvision" ]]; then
-  shopt -s expand_aliases ; x=`Rscript -e "cat(Sys.which('R'))"` ; alias R="travis_wait
-  100 ${x}" ; fi
 after_success:
-- cat ${PACKAGE_NAME}.Rcheck/00install.out
-- cat ${PACKAGE_NAME}.Rcheck/00check.log
-after_failure:
-- cat ${PACKAGE_NAME}.Rcheck/00install.out
-- cat ${PACKAGE_NAME}.Rcheck/00check.log
-before_deploy:
-- if [ "$TRAVIS_OS_NAME" = "osx" ]; then PKG_TARBALL=$(ls -1t *.tgz | head -n 1);
-  PKG_TARBALL_WITH_R=`echo $PKG_TARBALL | sed 's/.tgz/_'"R${rver}"'.tgz/'` ; mv ${PKG_TARBALL}
-  ${PKG_TARBALL_WITH_R} ; echo "Built tarball is ${PKG_TARBALL_WITH_R}" ; fi
-- if [[ "${TRAVIS_OS_NAME}" = "osx" ]]; then rm -f *.tar.gz; fi
+- Rscript -e 'covr::coveralls(type = "all")'
+- Rscript -e 'covr::codecov(type = "all")'
+notifications:
+  email:
+    on_success: change
+    on_failure: change
 deploy:
   provider: releases
   skip_cleanup: true
   file_glob: true
-  file: "${PACKAGE_NAME}*.t*gz"
+  file: fslr*.t*gz
   on:
     tags: true
+    repo: muschellij2/fslr
   api-key:
-    secure: SreEXua8gviB9yAzaU6DGbj5P1/8vTWHhVl4EZHytE/NWU2LiDxWhSklT0n4sl4c5tRd7zhbleX5eKK8nid0uty/8YUxrdCY/Gpf0NzXCNHHfI/G+kzlenAeOizeO4j71AE5KtwJU3kXJgCUYwc5cdGDOZF3m0R8DmGC0A7lByateSPzdsGbPRQI/KFB098nJFZ6eSI/OeFKjvw7V3NWvlKbF8C1FCDOwKTv7kHXYsCeCoTIWat+WQg1CaScYxxUnbvNQWtED/jjXwzZA2e5G1Ssk+clKL4HLqwNnoGpdKQJaJBzh+bjh2oADyEdDy546YHuRYwkM7E2yGjqdOBNgC5/eD6iGuF9X5BWgGy5WbEMW9F4FubmxIW9pwEYhgYnh73MDJ1nAqgI6ky2rq7KVMDCj2ijMAfmljfQbAuRDA85tfajreF9QirDiH+L1Hu/K6gZAUjCkC7/5m7lNZdFqtxZ5Hmq20U3MQCDeh5H/ORCYcCd0asdOlvTMSOjEHnBpUFiTIBi0LiiWY44XABEKLsZPp8svFteX/+PsDeZjOXp8uPmaXelMW+oOr+dB4epDSfxeydkWddpvlhVwLQgXuDyb7MfdCWFYu9IJYpmmw+ca5sUJP+fMQefEieIKZT0K/cnDCigT+5qAbnSNHaccwqvP1+A8T7fE0QG7EAhHgA=
-after_deploy:
-- if [[ "${TRAVIS_OS_NAME}" == "linux" && ${TRAVIS_R_VERSION_STRING} = "release" ]];
-  then echo 'covr::coveralls(type = "all")' > neuroc_covr.R ; travis_wait 100 Rscript
-  neuroc_covr.R ; rm neuroc_covr.R ; fi
+    secure: SOPNhDqlV76nlr7rzmXPfnR1lJVrSOjxGNm53ROThynckSlM44QozGMhw84knKK1gn73GRIMAjDDVYVdvdcFSgXVU4Q9RXl//Rbdp7oS+2njGpxz6I3PwQ2VBr+nK7QzGHpa6cDV6xIdwd0uAiYHbk/Js4FMNnqF2iyE8UOfAXJBp/6dfwy2e/Gg05UFgYGgCCcuKJZgRoDW2+IExk8bTwMfI/xuLe7GCznOCn5rlG4sZ0JuMXyLN7tJZFSzOVQv/XjTwHBzon6HlhQd2XrKpvA44Acgb11ConoBc9lj8g66TXq75dX/O+qBCuMkuq49AR+fE9Az+Ww7c3JT/dn9EsxCWVsyHQyjC7YuuW3njjTNowwS2uoeCOh2fOrQdZeum2oja9O+QO47DL9CBVvPPEfstZ+FU1VNYBzrhQYpJ2CV9Xez+pleSEIzONpZPitgd55UsttPFOvGNBI8XpKWZ2GnZECakktHz3u/FGwxtIcBcJYPnS3UWQ/gdZJ9IHEJDHZrhlSAcQ5A1DFHkWJCnV/rhDNWbe88LkjnrfjeeIW9ZMenp3kzUhPnM5Ych6j1n9YoHHyYBCQexm/sw6Ef6u0ognIQzoHGwh9OozQrYgyg5AkZmcZ+lJcoSnTkfGL5w+w5Mo3wWuxA18em115j8qmJqQYPs7JzBQyRt+NxOXM=
