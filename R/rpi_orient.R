@@ -104,13 +104,14 @@ reverse_rpi_orient_file = function(
   
   outfile = tempfile(fileext = ".nii.gz")
   if (convention == "NEUROLOGICAL") {   
-    fslorient(file, 
+    file.copy(file, outfile)
+    fslorient(outfile, 
               opts = "-swaporient",
               retimg = FALSE, 
-              verbose = verbose,
-              outfile = outfile)   
+              verbose = verbose)   
     file = outfile
-  }
+    outfile = tempfile(fileext = ".nii.gz")    
+  }  
   fslswapdim(file = file, 
              a = orientation[1], 
              b = orientation[2], 
@@ -118,6 +119,7 @@ reverse_rpi_orient_file = function(
              verbose = verbose,
              retimg = FALSE,
              outfile = outfile)
+
   return(outfile)
 }
 
