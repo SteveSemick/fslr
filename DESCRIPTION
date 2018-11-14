@@ -19,17 +19,13 @@ Imports: methods, matrixStats, R.utils, graphics, grDevices, stats,
 Depends: oro.nifti (>= 0.5.0), neurobase, R (>= 3.2.0)
 License: GPL-3
 VignetteBuilder: knitr
-Suggests: 
-    knitr,
-    rmarkdown,
-    covr,
-    testthat
+Suggests: knitr, rmarkdown, covr, testthat
 BugReports: https://github.com/muschellij2/fslr/issues
 SystemRequirements: fsl
 RoxygenNote: 6.1.0
 Encoding: UTF-8
+biocViews:
 Repository: Neuroconductor
-Remotes:  
+Remotes: 
     neuroconductor/oro.nifti@f2b69621fdb62e21c79a13e8a16ab30f49b77efc,
     neuroconductor/neurobase@8c8370e5c4c00f0ace1232e0590be95463852951
-biocViews: 
