@@ -1,7 +1,4 @@
-^\./appveyor\.yml\.bak$
-^\./\.travis\.yml\.bak$
-^\.travis\.yml$
-^DESCRIPTION\.bak$
+^CRAN-RELEASE$
 ^fslinstaller\.py$
 ^.*\.Rproj$
 ^\.Rproj\.user$
