@@ -29,6 +29,7 @@ env:
   - RGL_USE_NULL=TRUE
   - PROJECT_NAME=neuroconductor
   - DISPLAY=:99.0
+  - R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
 r_check_args: "--as-cran --install-args=--build"
 before_install:
 - ulimit -n 2048
@@ -42,6 +43,7 @@ before_install:
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then no_open_mp ; fi
 - jags_install ;
 - v8_install ;
+- dcmtk_install ;
 - remove_neuroc_packages
 - cat DESCRIPTION
 - install_remotes_no_dep
@@ -78,7 +80,7 @@ deploy:
   on:
     tags: true
   api-key:
-    secure: WV6PW93uJnTGn73p8R6mBWp6VQp4sOhpBqxxKUUgiSDd0xtMGKJqX6h5100COfMb6/keU8N7fABSfJaoJw5QC6jIWU3s+TFT+7i+T+8X31TnWvaaMjLPicunR11Q1ZHmsF7v9ue00bv59TJ2QS82LpfcCffDEFAqs9xnFWvhnW9oO6iOVLioHk6C0lU3b+NrqPbnYwIU9+c4A1UwWWGUmHaBObHOmBv7a3yoV79BgNjxkMVFhEsITdUF6lkkfduI86lPBKCf8E5kNXt66La0YJCj7IHbc4ULkoYJvdrFclA+smo+aBrVmEE8ak+iHKimwBDzffISs/d5sZpXs6HRPiAfbL5kbe35O9d3KrMpSe9TiqK8n5H/O0upp+F/wSRq8WC5Z6l/tAxgaVjvBixwp73HYxtunbYYKjAjDpzcrcNQv1av0c3XQiVxKdosXVzEAFrWy43alf9e2NHfUtge4hMWxM/3mln1VSFbxo6/zHfZGY0STgLx/bxVhdWgXZF3bBmmKb8QQDyqHqfABRZnuPqchB6cNi5htRG9ledNSmKtPAydhHIJzhWGwiAtPQlttnHkdfDI2rmtwHe54aOMvTMkbbzTLeBowqoUkq1ct+TqHcd91XtZe4uk9guGKe0nF/ldvWXIKqChSB1/6frvin89x85IqSc4CuNSVWfs7cg=
+    secure: fJDehjRTfViC9Lf25i+uf5f1s5/oHqctMxowxUEhr34Ndr7uS66GAIAxkcnLBivUjJstKmatx97r79CaYb2kmKmgcNCN/eWV48IB04Btp4EvqCcST9QHLK59bAQJVSEGExQ7k2ceXk+Z+g6pbVq54mI4q3i5SYp3/hTGKePcsHxqyaAyeoIWKUaRtyXxhtBKoqBtO3evi82YMilDkOcZT1tSLL8he9dTz+k+yn+ha7v2g32IGboAY3EJy+okYaV6JQWiVJWqRH6zq2xqIXYO1kKX2ohTMDueUGC3WPgM1s70+d511isfpjJfTPQ7C/m4g6S+cLaDj+8yNh3QGDwIuuypkLNvortYQyiC7awMUzCRQitupFeN3x/gDj+6FOqeeB8faI7foAsLDp6NCnfgP1FS8E7PvJ65Iovhik+6uV5tXvKlWD6zbB8fwGbrUsyRZ5QsevuBPO1V9wz5sD4gw2Jc681f4MT3hYpHBVyzFpuMw3oPprde6QUqF0QFEh/H5eVX5VxvFDs3ahivQeiZXt1pexxDHVsoNHbqwLX2Cph4vqx1hOHwTa73M+6XuAIeu3ZYypJdATB04jut2vDuM/wlcBfr/A7lwQp4inszZ1jtCC5Th0xpSLmTWYom6vTHpkPi7aq8WIghDuG+RtXkW9mJ7A5kHfE3bZkbwtCmx64=
 after_deploy:
 - if [[ "${TRAVIS_OS_NAME}" == "linux" && ${TRAVIS_R_VERSION_STRING} = "release" ]];
   then echo 'covr::coveralls(type = "all", quiet = FALSE)' > neuroc_covr.R ; travis_wait
