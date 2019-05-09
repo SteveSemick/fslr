@@ -27,4 +27,4 @@ biocViews:
 Repository: Neuroconductor
 Remotes: 
     neuroconductor/oro.nifti@d94408b9efca4060771764370b9c9d092af655c0,
-    neuroconductor/neurobase@8b309ed4d496c575c76f572128b63d35efb97d01
+    neuroconductor/neurobase@9e62f05e9381273e916f8fac13acca29434f15c6
