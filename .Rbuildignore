@@ -32,3 +32,7 @@ docs/*
 ^sticker\.png$
 ^cran-comments\.md$
 ^data-raw$
+^DESCRIPTION\.bak$
+^\.travis\.yml$
+^\./\.travis\.yml\.bak$
+^\./appveyor\.yml\.bak$
