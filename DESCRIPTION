@@ -9,28 +9,30 @@ Authors@R: c(person(given = "John",
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-6469-1750")))
 Maintainer: John Muschelli <muschellij2@gmail.com>
-Description: Wrapper functions that interface with 'FSL'
-        <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>, a powerful and
-        commonly-used 'neuroimaging' software, using system commands.
-        The goal is to be able to interface with 'FSL' completely in R,
-        where you pass R objects of class 'nifti', implemented by
-        package 'oro.nifti', and the function executes an 'FSL' command
-        and returns an R object of class 'nifti' if desired.
-Imports: methods, R.utils, graphics, grDevices, stats, utils
-Depends: oro.nifti (>= 0.5.0), neurobase, R (>= 3.2.0)
+Description: Wrapper functions that interface with 'FSL' 
+    <http://fsl.fmrib.ox.ac.uk/fsl/fslwiki/>, a powerful and commonly-used 'neuroimaging'
+    software, using system commands. The goal is to be able to interface with 'FSL'
+    completely in R, where you pass R objects of class 'nifti', implemented by
+    package 'oro.nifti', and the function executes an 'FSL' command and returns an R
+    object of class 'nifti' if desired.
+Imports:
+    methods,
+    R.utils,
+    graphics,
+    grDevices,
+    stats, 
+    utils
+Depends:
+    oro.nifti (>= 0.5.0),
+    neurobase,
+    R (>= 3.2.0)
 License: GPL-3
 VignetteBuilder: knitr
-Suggests: 
+Suggests:
     knitr,
     rmarkdown,
-    covr,
-    testthat
+    covr
 BugReports: https://github.com/muschellij2/fslr/issues
-SystemRequirements: fsl
+SystemRequirements: FSL
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-Repository: Neuroconductor
-Remotes:  
-    neuroconductor/oro.nifti@acbc87a93512a48ae9e627823b8a08337da59bcc,
-    neuroconductor/neurobase@96abd32e868c588567869749268993766f421bfa
-biocViews: 
