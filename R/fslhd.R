@@ -614,7 +614,7 @@ getForms <- function(file,
   file = checkimg(file, ...)  
   x <- fslhd(file, verbose = verbose)
   convmat <- function(form){
-    ss <- strsplit(form, " ")
+    ss <- strsplit(form, "\t")
     ss <- t(sapply(ss, function(x) x[ x != "" ]))
     ss <- ss[, -1]
     class(ss) <- "numeric"
